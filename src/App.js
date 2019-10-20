@@ -14,21 +14,21 @@ import {
 
 
 class App extends Component {
-    state = {
-      distance: '',
-      gender: 'female',
-      age: '',
-      renderLoginForm: false,
-      authenticated: false,
-      email: '',
-      password: '',
-      message: '',
-      entrySaved: false,
-      renderIndex: false,
-      updateIndex: false,
-      renderCooperChart: false,
-      updateCooperChart: false
-    }
+  state = {
+    distance: '',
+    gender: 'female',
+    age: '',
+    renderLoginForm: false,
+    authenticated: false,
+    email: '',
+    password: '',
+    message: '',
+    entrySaved: false,
+    renderIndex: false,
+    updateIndex: false,
+    renderCooperChart: false,
+    updateCooperChart: false
+  }
 
   onChange(event) {
     this.setState({
@@ -62,6 +62,7 @@ class App extends Component {
 
  render() {
   let renderLogin;
+  let renderSignup;
   let user;
   let performanceDataIndex;
   let renderChart;
@@ -119,6 +120,23 @@ class App extends Component {
         </>
       )
     }
+    if (this.state.renderSignupForm === true) {
+      renderSignup = (
+      <>
+        <SignupForm 
+          signupHandler={this.onSignup.bind(this)}
+          inputChangeHandler={this.onChange.bind(this)}
+        />
+      </>
+      )
+    } else {
+      renderSignup = (
+        <>
+          <Button id="login" onClick={ () => this.setState({ renderSignupForm: true }) }>Sign Up</Button>
+          <p>{this.state.message}</p>
+        </>
+      )
+    }
   }
     return (
       <>
@@ -149,6 +167,7 @@ class App extends Component {
                     </div>
 
                     {renderLogin}
+                    {renderSignup}
                   </Grid.Row>
                   
                   <Grid.Row>
