@@ -10,7 +10,7 @@ const LoginForm = (props) => {
     <>
       <div id="login-form">
         <div>
-          <label >Email</label>
+          <label>Email</label>
           <Input type="text" placeholder=""  id="email" onChange={props.inputChangeHandler}></Input>
         </div>
 
